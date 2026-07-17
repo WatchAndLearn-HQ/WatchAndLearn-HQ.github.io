@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch and Learn</title>
+    <style>
+        /* Modern Dark Mode Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f0f;
+            color: #f1f1f1;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background-color: #161616;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid #282828;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #aaa;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Cards Grid (Main Home) */
+        .homepage-nav, .subcategory-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .nav-card {
+            background-color: #161616;
+            border: 2px solid #282828;
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff0000;
+            background-color: #1c1c1c;
+        }
+
+        .nav-card h2, .nav-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .nav-card p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        /* Main Category Content Sections */
+        .main-section {
+            display: none;
+            background-color: #161616;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 1px solid #282828;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* Control Buttons */
+        .back-btn {
+            background-color: #282828;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #333;
+            border-color: #ff0000;
+        }
+
+        /* Sub-content display sheets */
+        .sub-content-display {
+            display: none;
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px solid #383838;
+        }
+
+        .sub-content-display h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #e1e1e1;
+            border-bottom: 1px solid #444;
+            padding-bottom: 8px;
+        }
+
+        /* Large Video Design */
+        .video-container {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .video-container iframe {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            max-width: 100%;
+        }
+
+        /* Grid Framework for extra media elements later */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .placeholder-card {
+            background-color: #282828;
+            border-radius: 6px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #888;
+            border: 1px dashed #444;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Watch and Learn</h1>
+        <p>Explore educational content and fascinating facts</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ================= ROOT HOMEPAGE VIEW ================= -->
+        <div id="homepage" class="homepage-nav">
+            <div class="nav-card" onclick="showSection('long-form')">
+                <h2>🎬 Long Form</h2>
+                <p>Deep dives, tutorials, and extended breakdowns</p>
+            </div>
+            
+            <div class="nav-card" onclick="showSection('shorts')">
+                <h2>⚡ Shorts</h2>
+                <p>Quick facts and fast paced knowledge snippets</p>
+            </div>
+        </div>
+
+
+        <!-- ================= LONG FORM SECTION ================= -->
+        <section id="long-form" class="main-section">
+            <div class="section-header">
+                <h2>Long Form Content</h2>
+                <button class="back-btn" onclick="showHomepage()">← Back to Home</button>
+            </div>
+
+            <!-- Inside Category Choice Menu -->
+            <div id="long-form-menu" class="subcategory-nav">
+                <div class="nav-card" onclick="showSubContent('long-form', 'lf-educational')">
+                    <h3>📚 Educational</h3>
+                    <p>View structural tutorials and lectures</p>
+                </div>
+                <div class="nav-card" onclick="showSubContent('long-form', 'lf-facts')">
+                    <h3>💡 Facts</h3>
+                    <p>Browse long form general knowledge compilations</p>
+                </div>
+            </div>
+
+            <!-- Display Panes -->
+            <div id="lf-educational" class="sub-content-display">
+                <div class="section-header">
+                    <h3>📚 Long Form: Educational Content</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Change Subcategory</button>
+                </div>
+                <div class="video-container">
+                    <!-- CHANGED TO NO-COOKIE TO BYPASS LOCAL FILE RESTRICTIONS -->
+                    <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/egVstzQQF0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div id="lf-facts" class="sub-content-display">
+                <div class="section-header">
+                    <h3>💡 Long Form: Facts</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Change Subcategory</button>
+                </div>
+                <div class="video-grid">
+                    <div class="placeholder-card">Videos coming soon!</div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SHORTS SECTION ================= -->
+        <section id="shorts" class="main-section">
+            <div class="section-header">
+                <h2>Shorts</h2>
+                <button class="back-btn" onclick="showHomepage()">← Back to Home</button>
+            </div>
+
+            <!-- Inside Category Choice Menu -->
+            <div id="shorts-menu" class="subcategory-nav">
+                <div class="nav-card" onclick="showSubContent('shorts', 'sh-educational')">
+                    <h3>📚 Educational Shorts</h3>
+                    <p>Bite-sized technical lessons</p>
+                </div>
+                <div class="nav-card" onclick="showSubContent('shorts', 'sh-facts')">
+                    <h3>💡 Fact Shorts</h3>
+                    <p>Quick dynamic updates and interesting facts</p>
+                </div>
+            </div>
+
+            <!-- Display Panes -->
+            <div id="sh-educational" class="sub-content-display">
+                <div class="section-header">
+                    <h3>📚 Shorts: Educational</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Change Subcategory</button>
+                </div>
+                <div class="video-grid">
+                    <div class="placeholder-card">Shorts coming soon!</div>
+                </div>
+            </div>
+
+            <div id="sh-facts" class="sub-content-display">
+                <div class="section-header">
+                    <h3>💡 Shorts: Facts</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Change Subcategory</button>
+                </div>
+                <div class="video-grid">
+                    <div class="placeholder-card">Shorts coming soon!</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Interface Navigation Logic -->
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('homepage').style.display = 'none';
+            
+            document.getElementById('long-form').style.display = 'none';
+            document.getElementById('shorts').style.display = 'none';
+            resetCategoryMenu(sectionId);
+            
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function showHomepage() {
+            document.getElementById('long-form').style.display = 'none';
+            document.getElementById('shorts').style.display = 'none';
+            document.getElementById('homepage').style.display = 'grid';
+        }
+
+        function showSubContent(parentSectionId, targetSubId) {
+            document.getElementById(parentSectionId + '-menu').style.display = 'none';
+            
+            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display');
+            displays.forEach(div => div.style.display = 'none');
+            
+            document.getElementById(targetSubId).style.display = 'block';
+        }
+
+        function resetCategoryMenu(parentSectionId) {
+            document.getElementById(parentSectionId + '-menu').style.display = 'grid';
+            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display');
+            displays.forEach(div => div.style.display = 'none');
+        }
+    </script>
+
+</body>
+</html>
