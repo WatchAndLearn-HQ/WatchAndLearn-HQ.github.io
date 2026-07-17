@@ -35,7 +35,7 @@
                 radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.03) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 42, 42, 0.02) 0%, transparent 40%);
             background-attachment: fixed;
-            padding-top: 80px;
+            padding-top: 100px;
         }
 
         /* --- Header Navigation Bar --- */
@@ -67,7 +67,25 @@
             color: var(--accent-color);
         }
 
-        /* --- Top Right Dropdown Profile Wrapper --- */
+        /* --- Upper Right Profile Component & Inline Stats --- */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-stats {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .header-stats strong {
+            color: #fff;
+        }
+
         .profile-menu-container {
             position: relative;
         }
@@ -91,7 +109,6 @@
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* SVG Default Placeholder Icon */
         .nav-avatar-trigger svg {
             width: 24px;
             height: 24px;
@@ -150,72 +167,41 @@
             color: var(--accent-color);
         }
 
-        /* --- Welcome Dashboard Homepage --- */
-        .dashboard-hero {
-            background: linear-gradient(135deg, #121216 0%, #181822 100%);
-            border: 1px solid var(--border-glow);
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .dashboard-header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-        }
-
-        .dashboard-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            padding: 25px;
+        /* --- Elegant Title Headings --- */
+        header {
             text-align: center;
+            padding: 30px 20px;
         }
 
-        .stat-box .num {
-            font-size: 2.5rem;
+        header h1 {
+            font-size: 3.5rem;
             font-weight: 800;
-            color: var(--accent-color);
-            line-height: 1;
-            margin-bottom: 5px;
-            text-shadow: 0 0 20px var(--accent-glow);
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #ffffff 40%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
         }
 
-        .stat-box .label {
-            font-size: 0.9rem;
+        header p {
             color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* --- Category Hub Grid --- */
-        .hub-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
+        /* --- Original Category Grid Navigation --- */
         .homepage-nav, .subcategory-nav, .nested-category-nav {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            margin-top: 20px;
         }
 
         .nav-card {
@@ -237,7 +223,7 @@
         }
 
         .nav-card h2, .nav-card h3, .nav-card h4 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 12px;
@@ -278,10 +264,7 @@
             padding-bottom: 20px;
         }
 
-        .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; }
 
         .back-btn {
             background-color: rgba(255, 255, 255, 0.05);
@@ -311,7 +294,7 @@
             border: 1px solid rgba(255,255,255,0.04);
         }
 
-        /* --- Video Dashboard Blocks --- */
+        /* --- Video Display Chassis --- */
         .video-block {
             display: flex;
             flex-direction: column;
@@ -374,7 +357,7 @@
             border-color: rgba(34, 197, 94, 0.3);
         }
 
-        /* --- Shorts Layout Config --- */
+        /* --- Shorts Flexible Box System --- */
         .shorts-flex-container {
             display: flex;
             justify-content: center;
@@ -403,49 +386,40 @@
     <!-- ================= PREMIUM APPLICATION NAVBAR ================= -->
     <div class="navbar">
         <div class="nav-brand" onclick="showHomepage()">Watch<span>And</span>Learn</div>
-        <div class="profile-menu-container">
-            <!-- Top Right Gray Avatar Trigger Box -->
-            <div id="avatar-trigger" class="nav-avatar-trigger" onclick="toggleDropdown()">
-                <!-- Default SVG Gray user figure -->
-                <svg id="svg-placeholder" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"/></svg>
-                <img id="user-live-avatar" src="" alt="Avatar" style="display: none;">
+        
+        <div class="profile-container">
+            <!-- Inline Stat Blocks Linked Right Next to Avatar Box -->
+            <div id="inline-stats-display" class="header-stats">
+                Not Connected
             </div>
-            <!-- Interactive Menu Dropdown Sheet -->
-            <div id="profile-dropdown" class="dropdown-menu">
-                <div id="dropdown-meta" class="dropdown-user-info" style="display: none;">
-                    <div id="dropdown-name" class="name">Anonymous</div>
-                    <div class="status">Channel Partner Connected</div>
+            
+            <div class="profile-menu-container">
+                <div id="avatar-trigger" class="nav-avatar-trigger" onclick="toggleDropdown()">
+                    <svg id="svg-placeholder" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"/></svg>
+                    <img id="user-live-avatar" src="" alt="Avatar" style="display: none;">
                 </div>
-                <button id="login-action-btn" class="dropdown-item">Sign In with YouTube</button>
-                <button id="logout-action-btn" class="dropdown-item" style="display: none;">Disconnect Profile</button>
+                
+                <div id="profile-dropdown" class="dropdown-menu">
+                    <div id="dropdown-meta" class="dropdown-user-info" style="display: none;">
+                        <div id="dropdown-name" class="name">Anonymous</div>
+                        <div class="status">Channel Analytics Synced</div>
+                    </div>
+                    <button id="login-action-btn" class="dropdown-item">Sign In with YouTube</button>
+                    <button id="logout-action-btn" class="dropdown-item" style="display: none;">Disconnect Profile</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container">
 
-        <!-- ================= HOMEPAGE STATS & CORE LANDING HUBS ================= -->
-        <div id="homepage-dashboard-view">
-            <!-- Live Metrics Track Widget Box -->
-            <div class="dashboard-hero">
-                <div class="dashboard-header">
-                    <h1 id="welcome-title">Welcome Back Reader</h1>
-                    <p>Connect your YouTube account in the top-right profile slot to monitor analytics from channel @WatchAndLearn-23.</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div id="stat-completed" class="num">0</div>
-                        <div class="label">Completed Library Loops</div>
-                    </div>
-                    <div class="stat-box">
-                        <div id="stat-liked" class="num">0</div>
-                        <div class="label">Total System Endorsements</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content Path Link Boxes -->
-            <h3 class="hub-title">Broadcast Hub Navigation</h3>
+        <!-- ================= ORIGINAL ROOT HOMEPAGE VIEW ================= -->
+        <div id="homepage-root">
+            <header>
+                <h1>Watch and Learn</h1>
+                <p>Explore production breakdowns and dynamic lessons from channel @WatchAndLearn-23</p>
+            </header>
+            
             <div class="homepage-nav">
                 <div class="nav-card" onclick="showSection('long-form')">
                     <h2>🎬 Long Form Archives</h2>
@@ -463,7 +437,7 @@
         <section id="long-form" class="main-section">
             <div class="section-header">
                 <h2>Long Form Productions</h2>
-                <button class="back-btn" onclick="showHomepage()">📑 Return to Dashboard</button>
+                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
             </div>
 
             <div id="long-form-menu" class="subcategory-nav">
@@ -537,7 +511,7 @@
         <section id="shorts" class="main-section">
             <div class="section-header">
                 <h2>Shorts Dynamic Feed</h2>
-                <button class="back-btn" onclick="showHomepage()">📑 Return to Dashboard</button>
+                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
             </div>
 
             <div id="shorts-menu" class="subcategory-nav">
@@ -622,7 +596,7 @@
     <!-- ================= INTERFACE ROUTING ENGINE ================= -->
     <script>
         function showSection(sectionId) {
-            document.getElementById('homepage-dashboard-view').style.display = 'none';
+            document.getElementById('homepage-root').style.display = 'none';
             document.getElementById('long-form').style.display = 'none';
             document.getElementById('shorts').style.display = 'none';
             resetCategoryMenu(sectionId);
@@ -632,7 +606,7 @@
         function showHomepage() {
             document.getElementById('long-form').style.display = 'none';
             document.getElementById('shorts').style.display = 'none';
-            document.getElementById('homepage-dashboard-view').style.display = 'block';
+            document.getElementById('homepage-root').style.display = 'block';
         }
 
         function showSubContent(parentSectionId, targetSubId) {
@@ -670,7 +644,6 @@
             }
         }
 
-        // Close dropdown when clicking outside
         window.addEventListener('click', function(e) {
             if (!document.getElementById('avatar-trigger').contains(e.target)) {
                 document.getElementById('profile-dropdown').style.display = 'none';
@@ -679,12 +652,13 @@
         });
     </script>
 
-    <!-- ================= BACKEND FIREBASE MODULE ENGINE ================= -->
+    <!-- ================= BACKEND FIREBASE LAYER ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+        // Using your exact client configuration explicitly
         const firebaseConfig = {
             apiKey: "AIzaSyCgcllHO-o2Cmg4OagD6ZpShWLW774WqxU",
             authDomain: "watchandlearn-hq.firebaseapp.com",
@@ -709,35 +683,32 @@
         const dropMeta = document.getElementById('dropdown-meta');
         const liveAvatar = document.getElementById('user-live-avatar');
         const svgPlaceholder = document.getElementById('svg-placeholder');
+        const inlineStatsDisplay = document.getElementById('inline-stats-display');
 
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 currentUser = user;
                 
-                // Switch default icon to live user image URL
                 svgPlaceholder.style.display = 'none';
                 liveAvatar.src = user.photoURL || '';
                 liveAvatar.style.display = 'block';
 
-                // Swap Dropdown Action Items
                 loginBtn.style.display = 'none';
                 logoutBtn.style.display = 'block';
                 dropMeta.style.display = 'block';
                 document.getElementById('dropdown-name').innerText = user.displayName;
-                document.getElementById('welcome-title').innerText = `Welcome Back, ${user.displayName.split(' ')[0]}`;
 
                 await syncUserData(user.uid);
             } else {
                 currentUser = null;
                 
-                // Return to gray profile state
                 liveAvatar.style.display = 'none';
                 svgPlaceholder.style.display = 'block';
 
                 loginBtn.style.display = 'block';
                 logoutBtn.style.display = 'none';
                 dropMeta.style.display = 'none';
-                document.getElementById('welcome-title').innerText = "Welcome Back Reader";
+                inlineStatsDisplay.innerHTML = `Not Connected`;
                 
                 userDataLocal = { watchedVideos: {}, likedVideos: [] };
                 updateMetricsDashboard();
@@ -768,9 +739,10 @@
             const completions = Object.values(userDataLocal.watchedVideos || {}).filter(v => v.completed).length;
             const likesCount = (userDataLocal.likedVideos || []).length;
             
-            // Push numbers straight onto dashboard hub interface
-            document.getElementById('stat-completed').innerText = completions;
-            document.getElementById('stat-liked').innerText = likesCount;
+            // Push layout parameters tightly right inside the navigation layer
+            if (currentUser) {
+                inlineStatsDisplay.innerHTML = `Views: <strong>${completions}</strong><br>Watch Time: <strong>${completions * 3}m</strong><br>Videos Watched: <strong>${completions}</strong>`;
+            }
             
             ['egVstzQQF0c', 'FhVCr64NHcw', 'Y226CScr4tc'].forEach(id => {
                 const badge = document.getElementById(`badge-${id}`);
@@ -798,7 +770,7 @@
         }
 
         async function toggleLocalLike(videoId) {
-            if (!currentUser) { alert("Connect your account first from the top right profile dropdown to save stats!"); return; }
+            if (!currentUser) { alert("Connect your profile via the upper right icon dropdown to configure endorsements!"); return; }
             const docRef = doc(db, "users", currentUser.uid);
             let likes = userDataLocal.likedVideos || [];
             
@@ -826,7 +798,7 @@
         window.triggerVideoComplete = triggerVideoComplete;
     </script>
 
-    <!-- ================= YOUTUBE METRICS TRACKING ENGINE API ================= -->
+    <!-- ================= YOUTUBE EMBED PLAYER SYSTEM ================= -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
