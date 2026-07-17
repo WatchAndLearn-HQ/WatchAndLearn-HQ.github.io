@@ -35,50 +35,189 @@
                 radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.03) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 42, 42, 0.02) 0%, transparent 40%);
             background-attachment: fixed;
+            padding-top: 80px;
         }
 
-        /* --- Elegant Master Header --- */
-        header {
-            position: relative;
-            background: linear-gradient(180deg, #121216 0%, transparent 100%);
-            text-align: center;
-            padding: 70px 20px 40px;
+        /* --- Header Navigation Bar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glow);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
         }
 
-        header h1 {
-            font-size: 3.5rem;
+        .nav-brand {
             font-weight: 800;
-            letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #ffffff 40%, #ff6b6b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            cursor: pointer;
         }
 
-        header p {
+        .nav-brand span {
+            color: var(--accent-color);
+        }
+
+        /* --- Top Right Dropdown Profile Wrapper --- */
+        .profile-menu-container {
+            position: relative;
+        }
+
+        .nav-avatar-trigger {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background-color: #2b2b36;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-avatar-trigger:hover, .nav-avatar-trigger.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* SVG Default Placeholder Icon */
+        .nav-avatar-trigger svg {
+            width: 24px;
+            height: 24px;
+            fill: #7c7c93;
+        }
+
+        .nav-avatar-trigger img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 55px;
+            right: 0;
+            width: 240px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 10px 0;
+            animation: fadeIn 0.2s ease forwards;
+        }
+
+        .dropdown-user-info {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            font-size: 1.25rem;
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .dropdown-user-info .name {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
         }
 
-        /* --- Dynamic Interactive Grids --- */
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            text-align: left;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 42, 42, 0.1);
+            color: var(--accent-color);
+        }
+
+        /* --- Welcome Dashboard Homepage --- */
+        .dashboard-hero {
+            background: linear-gradient(135deg, #121216 0%, #181822 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Category Hub Grid --- */
+        .hub-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
         .homepage-nav, .subcategory-nav, .nested-category-nav {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 20px;
         }
 
-        /* --- The 100x Card Core Styling --- */
         .nav-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-glow);
@@ -86,27 +225,8 @@
             padding: 45px 30px;
             text-align: center;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             transition: var(--transition-smooth);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 42, 42, 0.15) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-
-        .nav-card:hover::before {
-            opacity: 1;
         }
 
         .nav-card:hover {
@@ -116,8 +236,8 @@
             box-shadow: 0 12px 40px rgba(255, 42, 42, 0.15);
         }
 
-        .nav-card h2 {
-            font-size: 2rem;
+        .nav-card h2, .nav-card h3, .nav-card h4 {
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 12px;
@@ -127,17 +247,9 @@
             gap: 12px;
         }
 
-        .nav-card h3, .nav-card h4 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-
         .nav-card p {
             color: var(--text-secondary);
             font-size: 1rem;
-            font-weight: 400;
         }
 
         /* --- Unified Content Sections --- */
@@ -153,7 +265,7 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -169,10 +281,8 @@
         .section-header h2 {
             font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
 
-        /* --- Sleek Control Mechanism --- */
         .back-btn {
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
@@ -181,7 +291,6 @@
             border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -192,33 +301,22 @@
             background-color: var(--accent-color);
             border-color: var(--accent-color);
             box-shadow: 0 0 20px var(--accent-glow);
-            transform: translateX(-4px);
         }
 
-        /* --- Ultimate Presentation Windows --- */
         .sub-content-display, .nested-content-display {
             display: none;
             background: rgba(10, 10, 12, 0.5);
             border-radius: 16px;
             padding: 30px;
             border: 1px solid rgba(255,255,255,0.04);
-            animation: fadeIn 0.3s ease forwards;
         }
 
-        .sub-content-display h3, .nested-content-display h3 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            border: none;
-            padding: 0;
-        }
-
-        /* --- Large Video Component Layout --- */
-        .video-container {
+        /* --- Video Dashboard Blocks --- */
+        .video-block {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin-top: 10px;
+            margin-bottom: 40px;
             width: 100%;
         }
 
@@ -229,57 +327,65 @@
             aspect-ratio: 16 / 9;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 42, 42, 0.05);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
             border: 1px solid rgba(255,255,255,0.06);
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-wrapper div { width: 100%; height: 100%; }
+
+        .video-toolbar {
             width: 100%;
-            height: 100%;
-            border: 0;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding: 0 10px;
         }
 
-        /* --- Advanced Side-by-Side Shorts Integration --- */
+        .like-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .like-btn.liked {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .watch-badge {
+            font-size: 0.9rem;
+            background: #1e293b;
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+        }
+
+        .watch-badge.completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        /* --- Shorts Layout Config --- */
         .shorts-flex-container {
             display: flex;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
-            margin-top: 10px;
             width: 100%;
         }
 
-        .short-card-wrapper {
-            width: 340px;
-            aspect-ratio: 9 / 16;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: var(--transition-smooth);
-        }
-
-        .short-card-wrapper:hover {
-            transform: scale(1.03);
-            border-color: var(--accent-color);
-            box-shadow: 0 20px 45px rgba(2ff, 42, 42, 0.15);
-        }
-
-        .short-card-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* --- Empty Workspace Framework Design --- */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
+        .short-block { display: flex; flex-direction: column; align-items: center; width: 340px; }
+        .short-card-wrapper { width: 100%; aspect-ratio: 9 / 16; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        .short-card-wrapper div { width: 100%; height: 100%; }
 
         .placeholder-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
@@ -289,29 +395,66 @@
             color: var(--text-secondary);
             border: 2px dashed rgba(255,255,255,0.06);
             width: 100%;
-            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Watch and Learn</h1>
-        <p>Explore high-quality production breakdowns, technical lectures, and deep dives</p>
-    </header>
+    <!-- ================= PREMIUM APPLICATION NAVBAR ================= -->
+    <div class="navbar">
+        <div class="nav-brand" onclick="showHomepage()">Watch<span>And</span>Learn</div>
+        <div class="profile-menu-container">
+            <!-- Top Right Gray Avatar Trigger Box -->
+            <div id="avatar-trigger" class="nav-avatar-trigger" onclick="toggleDropdown()">
+                <!-- Default SVG Gray user figure -->
+                <svg id="svg-placeholder" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"/></svg>
+                <img id="user-live-avatar" src="" alt="Avatar" style="display: none;">
+            </div>
+            <!-- Interactive Menu Dropdown Sheet -->
+            <div id="profile-dropdown" class="dropdown-menu">
+                <div id="dropdown-meta" class="dropdown-user-info" style="display: none;">
+                    <div id="dropdown-name" class="name">Anonymous</div>
+                    <div class="status">Channel Partner Connected</div>
+                </div>
+                <button id="login-action-btn" class="dropdown-item">Sign In with YouTube</button>
+                <button id="logout-action-btn" class="dropdown-item" style="display: none;">Disconnect Profile</button>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
 
-        <!-- ================= ROOT HOMEPAGE VIEW ================= -->
-        <div id="homepage" class="homepage-nav">
-            <div class="nav-card" onclick="showSection('long-form')">
-                <h2>🎬 Long Form</h2>
-                <p>Deep dives, tutorials, and extended conceptual breakdowns</p>
+        <!-- ================= HOMEPAGE STATS & CORE LANDING HUBS ================= -->
+        <div id="homepage-dashboard-view">
+            <!-- Live Metrics Track Widget Box -->
+            <div class="dashboard-hero">
+                <div class="dashboard-header">
+                    <h1 id="welcome-title">Welcome Back Reader</h1>
+                    <p>Connect your YouTube account in the top-right profile slot to monitor analytics from channel @WatchAndLearn-23.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div id="stat-completed" class="num">0</div>
+                        <div class="label">Completed Library Loops</div>
+                    </div>
+                    <div class="stat-box">
+                        <div id="stat-liked" class="num">0</div>
+                        <div class="label">Total System Endorsements</div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="nav-card" onclick="showSection('shorts')">
-                <h2>⚡ Shorts</h2>
-                <p>Fast-paced knowledge snippets and quick updates</p>
+
+            <!-- Content Path Link Boxes -->
+            <h3 class="hub-title">Broadcast Hub Navigation</h3>
+            <div class="homepage-nav">
+                <div class="nav-card" onclick="showSection('long-form')">
+                    <h2>🎬 Long Form Archives</h2>
+                    <p>Deep dives, tutorials, and extended breakdowns</p>
+                </div>
+                <div class="nav-card" onclick="showSection('shorts')">
+                    <h2>⚡ Shorts Studio</h2>
+                    <p>Bite-sized knowledge snapshots and fast updates</p>
+                </div>
             </div>
         </div>
 
@@ -319,11 +462,10 @@
         <!-- ================= LONG FORM SECTION ================= -->
         <section id="long-form" class="main-section">
             <div class="section-header">
-                <h2>Long Form Production</h2>
-                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
+                <h2>Long Form Productions</h2>
+                <button class="back-btn" onclick="showHomepage()">📑 Return to Dashboard</button>
             </div>
 
-            <!-- Inside Category Choice Menu -->
             <div id="long-form-menu" class="subcategory-nav">
                 <div class="nav-card" onclick="showSubContent('long-form', 'lf-educational-menu')">
                     <h3>📚 Educational</h3>
@@ -335,7 +477,6 @@
                 </div>
             </div>
 
-            <!-- Nested Educational Choice Menu -->
             <div id="lf-educational-menu" class="nested-content-display">
                 <div class="section-header">
                     <h3>📚 Long Form: Select Arena</h3>
@@ -353,7 +494,6 @@
                 </div>
             </div>
 
-            <!-- Final Content Display Panes -->
             <div id="lf-math" class="nested-content-display">
                 <div class="section-header">
                     <h3>📐 Long Form: Mathematics</h3>
@@ -369,9 +509,14 @@
                     <h3>🧬 Long Form: Biology</h3>
                     <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-biology')">↩ Change Subject</button>
                 </div>
-                <div class="video-container">
+                
+                <div class="video-block">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/egVstzQQF0c" title="Let's learn about the Human Body" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <div id="player-body"></div>
+                    </div>
+                    <div class="video-toolbar">
+                        <button id="like-egVstzQQF0c" class="like-btn" onclick="toggleLocalLike('egVstzQQF0c')">❤️ Like Video</button>
+                        <span id="badge-egVstzQQF0c" class="watch-badge">Not watched yet</span>
                     </div>
                 </div>
             </div>
@@ -392,10 +537,9 @@
         <section id="shorts" class="main-section">
             <div class="section-header">
                 <h2>Shorts Dynamic Feed</h2>
-                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
+                <button class="back-btn" onclick="showHomepage()">📑 Return to Dashboard</button>
             </div>
 
-            <!-- Inside Category Choice Menu -->
             <div id="shorts-menu" class="subcategory-nav">
                 <div class="nav-card" onclick="showSubContent('shorts', 'sh-educational-menu')">
                     <h3>📚 Educational Feed</h3>
@@ -403,11 +547,10 @@
                 </div>
                 <div class="nav-card" onclick="showSubContent('shorts', 'sh-facts')">
                     <h3>💡 Fact Feed</h3>
-                    <p>Fast paced breakdowns and cultural matrix updates</p>
+                    <p>Fast paced breakdowns and updates</p>
                 </div>
             </div>
 
-            <!-- Nested Educational Choice Menu -->
             <div id="sh-educational-menu" class="nested-content-display">
                 <div class="section-header">
                     <h3>📚 Shorts: Select Area</h3>
@@ -425,7 +568,6 @@
                 </div>
             </div>
 
-            <!-- Final Content Display Panes -->
             <div id="sh-math" class="nested-content-display">
                 <div class="section-header">
                     <h3>📐 Shorts: Mathematics</h3>
@@ -451,13 +593,25 @@
                     <h3>💡 Shorts: Fact Archives</h3>
                     <button class="back-btn" onclick="resetCategoryMenu('shorts')">↩ Change Subcategory</button>
                 </div>
-                <!-- Dynamic Matrix 4k Grid Shorts Flex Integration Container -->
+                
                 <div class="shorts-flex-container">
-                    <div class="short-card-wrapper">
-                        <iframe src="https://www.youtube.com/embed/FhVCr64NHcw" title="Did you know this Minecraft Fact?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="short-block">
+                        <div class="short-card-wrapper">
+                            <div id="player-mc"></div>
+                        </div>
+                        <div class="video-toolbar">
+                            <button id="like-FhVCr64NHcw" class="like-btn" onclick="toggleLocalLike('FhVCr64NHcw')">❤️ Like</button>
+                            <span id="badge-FhVCr64NHcw" class="watch-badge">Unwatched</span>
+                        </div>
                     </div>
-                    <div class="short-card-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Y226CScr4tc" title="Did you know this Roblox Fact?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="short-block">
+                        <div class="short-card-wrapper">
+                            <div id="player-roblox"></div>
+                        </div>
+                        <div class="video-toolbar">
+                            <button id="like-Y226CScr4tc" class="like-btn" onclick="toggleLocalLike('Y226CScr4tc')">❤️ Like</button>
+                            <span id="badge-Y226CScr4tc" class="watch-badge">Unwatched</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -465,10 +619,10 @@
 
     </div>
 
-    <!-- Interface Controller Engine Script -->
+    <!-- ================= INTERFACE ROUTING ENGINE ================= -->
     <script>
         function showSection(sectionId) {
-            document.getElementById('homepage').style.display = 'none';
+            document.getElementById('homepage-dashboard-view').style.display = 'none';
             document.getElementById('long-form').style.display = 'none';
             document.getElementById('shorts').style.display = 'none';
             resetCategoryMenu(sectionId);
@@ -478,7 +632,7 @@
         function showHomepage() {
             document.getElementById('long-form').style.display = 'none';
             document.getElementById('shorts').style.display = 'none';
-            document.getElementById('homepage').style.display = 'grid';
+            document.getElementById('homepage-dashboard-view').style.display = 'block';
         }
 
         function showSubContent(parentSectionId, targetSubId) {
@@ -504,16 +658,205 @@
             displays.forEach(div => div.style.display = 'none');
         }
 
-        // Card Interactive 3D Lighting Cursor Tracking Effect
-        document.querySelectorAll('.nav-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--x', `${x}px`);
-                card.style.setProperty('--y', `${y}px`);
-            });
+        function toggleDropdown() {
+            var menu = document.getElementById('profile-dropdown');
+            var trigger = document.getElementById('avatar-trigger');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+                trigger.classList.remove('active');
+            } else {
+                menu.style.display = 'block';
+                trigger.classList.add('active');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!document.getElementById('avatar-trigger').contains(e.target)) {
+                document.getElementById('profile-dropdown').style.display = 'none';
+                document.getElementById('avatar-trigger').classList.remove('active');
+            }
         });
+    </script>
+
+    <!-- ================= BACKEND FIREBASE MODULE ENGINE ================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCgcllHO-o2Cmg4OagD6ZpShWLW774WqxU",
+            authDomain: "watchandlearn-hq.firebaseapp.com",
+            projectId: "watchandlearn-hq",
+            storageBucket: "watchandlearn-hq.firebasestorage.app",
+            messagingSenderId: "307743739419",
+            appId: "1:307743739419:web:e36f6649e568098d1cb2be",
+            measurementId: "G-G0JV985MFT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/youtube.readonly');
+
+        let currentUser = null;
+        let userDataLocal = { watchedVideos: {}, likedVideos: [] };
+
+        const loginBtn = document.getElementById('login-action-btn');
+        const logoutBtn = document.getElementById('logout-action-btn');
+        const dropMeta = document.getElementById('dropdown-meta');
+        const liveAvatar = document.getElementById('user-live-avatar');
+        const svgPlaceholder = document.getElementById('svg-placeholder');
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUser = user;
+                
+                // Switch default icon to live user image URL
+                svgPlaceholder.style.display = 'none';
+                liveAvatar.src = user.photoURL || '';
+                liveAvatar.style.display = 'block';
+
+                // Swap Dropdown Action Items
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'block';
+                dropMeta.style.display = 'block';
+                document.getElementById('dropdown-name').innerText = user.displayName;
+                document.getElementById('welcome-title').innerText = `Welcome Back, ${user.displayName.split(' ')[0]}`;
+
+                await syncUserData(user.uid);
+            } else {
+                currentUser = null;
+                
+                // Return to gray profile state
+                liveAvatar.style.display = 'none';
+                svgPlaceholder.style.display = 'block';
+
+                loginBtn.style.display = 'block';
+                logoutBtn.style.display = 'none';
+                dropMeta.style.display = 'none';
+                document.getElementById('welcome-title').innerText = "Welcome Back Reader";
+                
+                userDataLocal = { watchedVideos: {}, likedVideos: [] };
+                updateMetricsDashboard();
+            }
+        });
+
+        loginBtn.addEventListener('click', () => {
+            signInWithPopup(auth, provider).catch(err => console.error("Login Error:", err));
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth).catch(err => console.error("Logout Error:", err));
+        });
+
+        async function syncUserData(uid) {
+            const docRef = doc(db, "users", uid);
+            const docSnap = await getDoc(docRef);
+            if (!docSnap.exists()) {
+                userDataLocal = { displayName: auth.currentUser.displayName, watchedVideos: {}, likedVideos: [] };
+                await setDoc(docRef, userDataLocal);
+            } else {
+                userDataLocal = docSnap.data();
+            }
+            updateMetricsDashboard();
+        }
+
+        function updateMetricsDashboard() {
+            const completions = Object.values(userDataLocal.watchedVideos || {}).filter(v => v.completed).length;
+            const likesCount = (userDataLocal.likedVideos || []).length;
+            
+            // Push numbers straight onto dashboard hub interface
+            document.getElementById('stat-completed').innerText = completions;
+            document.getElementById('stat-liked').innerText = likesCount;
+            
+            ['egVstzQQF0c', 'FhVCr64NHcw', 'Y226CScr4tc'].forEach(id => {
+                const badge = document.getElementById(`badge-${id}`);
+                const btn = document.getElementById(`like-${id}`);
+                
+                if (badge) {
+                    if (userDataLocal.watchedVideos?.[id]?.completed) {
+                        badge.innerText = "Completed";
+                        badge.classList.add('completed');
+                    } else {
+                        badge.innerText = "Unwatched";
+                        badge.classList.remove('completed');
+                    }
+                }
+                if (btn) {
+                    if (userDataLocal.likedVideos?.includes(id)) {
+                        btn.classList.add('liked');
+                        btn.innerText = "❤️ Liked";
+                    } else {
+                        btn.classList.remove('liked');
+                        btn.innerText = "❤️ Like";
+                    }
+                }
+            });
+        }
+
+        async function toggleLocalLike(videoId) {
+            if (!currentUser) { alert("Connect your account first from the top right profile dropdown to save stats!"); return; }
+            const docRef = doc(db, "users", currentUser.uid);
+            let likes = userDataLocal.likedVideos || [];
+            
+            if (likes.includes(videoId)) {
+                likes = likes.filter(id => id !== videoId);
+            } else {
+                likes.push(videoId);
+            }
+            userDataLocal.likedVideos = likes;
+            await updateDoc(docRef, { likedVideos: likes });
+            updateMetricsDashboard();
+        }
+
+        async function triggerVideoComplete(videoId) {
+            if (!currentUser) return;
+            const docRef = doc(db, "users", currentUser.uid);
+            if (!userDataLocal.watchedVideos) userDataLocal.watchedVideos = {};
+            
+            userDataLocal.watchedVideos[videoId] = { completed: true, timestamp: new Date() };
+            await updateDoc(docRef, { [`watchedVideos.${videoId}`]: { completed: true, timestamp: new Date() } });
+            updateMetricsDashboard();
+        }
+
+        window.toggleLocalLike = toggleLocalLike;
+        window.triggerVideoComplete = triggerVideoComplete;
+    </script>
+
+    <!-- ================= YOUTUBE METRICS TRACKING ENGINE API ================= -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var players = {};
+
+        function onYouTubeIframeAPIReady() {
+            players['egVstzQQF0c'] = new YT.Player('player-body', {
+                videoId: 'egVstzQQF0c',
+                events: { 'onStateChange': (e) => trackState(e, 'egVstzQQF0c') }
+            });
+            players['FhVCr64NHcw'] = new YT.Player('player-mc', {
+                videoId: 'FhVCr64NHcw',
+                events: { 'onStateChange': (e) => trackState(e, 'FhVCr64NHcw') }
+            });
+            players['Y226CScr4tc'] = new YT.Player('player-roblox', {
+                videoId: 'Y226CScr4tc',
+                events: { 'onStateChange': (e) => trackState(e, 'Y226CScr4tc') }
+            });
+        }
+
+        function trackState(event, videoId) {
+            if (event.data == YT.PlayerState.ENDED) {
+                if (window.triggerVideoComplete) {
+                    window.triggerVideoComplete(videoId);
+                }
+            }
+        }
     </script>
 </body>
 </html>
