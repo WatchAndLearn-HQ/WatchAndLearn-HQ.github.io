@@ -44,8 +44,8 @@
             padding: 20px;
         }
 
-        /* Navigation Cards Grid (Main Home) */
-        .homepage-nav, .subcategory-nav {
+        /* Navigation Cards Grid */
+        .homepage-nav, .subcategory-nav, .nested-category-nav {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
@@ -69,7 +69,7 @@
             background-color: #1c1c1c;
         }
 
-        .nav-card h2, .nav-card h3 {
+        .nav-card h2, .nav-card h3, .nav-card h4 {
             color: #fff;
             margin-bottom: 10px;
         }
@@ -121,7 +121,7 @@
         }
 
         /* Sub-content display sheets */
-        .sub-content-display {
+        .sub-content-display, .nested-content-display {
             display: none;
             background-color: #1f1f1f;
             border-radius: 8px;
@@ -130,7 +130,7 @@
             border: 1px solid #383838;
         }
 
-        .sub-content-display h3 {
+        .sub-content-display h3, .nested-content-display h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: #e1e1e1;
@@ -151,7 +151,6 @@
             max-width: 100%;
         }
 
-        /* Grid Framework for extra media elements later */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -200,9 +199,9 @@
 
             <!-- Inside Category Choice Menu -->
             <div id="long-form-menu" class="subcategory-nav">
-                <div class="nav-card" onclick="showSubContent('long-form', 'lf-educational')">
+                <div class="nav-card" onclick="showSubContent('long-form', 'lf-educational-menu')">
                     <h3>📚 Educational</h3>
-                    <p>View structural tutorials and lectures</p>
+                    <p>View lessons in Math and Biology</p>
                 </div>
                 <div class="nav-card" onclick="showSubContent('long-form', 'lf-facts')">
                     <h3>💡 Facts</h3>
@@ -210,15 +209,42 @@
                 </div>
             </div>
 
-            <!-- Display Panes -->
-            <div id="lf-educational" class="sub-content-display">
+            <!-- Nested Educational Choice Menu -->
+            <div id="lf-educational-menu" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📚 Long Form: Educational Content</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Change Subcategory</button>
+                    <h3>📚 Long Form: Select Subject</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Back to Options</button>
+                </div>
+                <div class="nested-category-nav">
+                    <div class="nav-card" onclick="showNestedContent('long-form', 'lf-educational-menu', 'lf-math')">
+                        <h4>📐 Math</h4>
+                        <p>Long form equations and problems</p>
+                    </div>
+                    <div class="nav-card" onclick="showNestedContent('long-form', 'lf-educational-menu', 'lf-biology')">
+                        <h4>🧬 Biology</h4>
+                        <p>Deep dives into living organisms</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Content Display Panes -->
+            <div id="lf-math" class="nested-content-display">
+                <div class="section-header">
+                    <h3>📐 Long Form: Math</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-math')">← Change Subject</button>
                 </div>
                 <div class="video-container">
-                    <!-- CHANGED TO NO-COOKIE TO BYPASS LOCAL FILE RESTRICTIONS -->
-                    <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/egVstzQQF0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe width="800" height="450" src="https://www.youtube.com/embed/egVstzQQF0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div id="lf-biology" class="nested-content-display">
+                <div class="section-header">
+                    <h3>🧬 Long Form: Biology</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-biology')">← Change Subject</button>
+                </div>
+                <div class="video-grid">
+                    <div class="placeholder-card">Biology videos coming soon!</div>
                 </div>
             </div>
 
@@ -243,9 +269,9 @@
 
             <!-- Inside Category Choice Menu -->
             <div id="shorts-menu" class="subcategory-nav">
-                <div class="nav-card" onclick="showSubContent('shorts', 'sh-educational')">
+                <div class="nav-card" onclick="showSubContent('shorts', 'sh-educational-menu')">
                     <h3>📚 Educational Shorts</h3>
-                    <p>Bite-sized technical lessons</p>
+                    <p>Quick dynamic lessons in Math and Biology</p>
                 </div>
                 <div class="nav-card" onclick="showSubContent('shorts', 'sh-facts')">
                     <h3>💡 Fact Shorts</h3>
@@ -253,14 +279,42 @@
                 </div>
             </div>
 
-            <!-- Display Panes -->
-            <div id="sh-educational" class="sub-content-display">
+            <!-- Nested Educational Choice Menu -->
+            <div id="sh-educational-menu" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📚 Shorts: Educational</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Change Subcategory</button>
+                    <h3>📚 Shorts: Select Subject</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Back to Options</button>
+                </div>
+                <div class="nested-category-nav">
+                    <div class="nav-card" onclick="showNestedContent('shorts', 'sh-educational-menu', 'sh-math')">
+                        <h4>📐 Math Shorts</h4>
+                        <p>Quick math tips and tricks</p>
+                    </div>
+                    <div class="nav-card" onclick="showNestedContent('shorts', 'sh-educational-menu', 'sh-biology')">
+                        <h4>🧬 Biology Shorts</h4>
+                        <p>Bite-sized biology facts</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Content Display Panes -->
+            <div id="sh-math" class="nested-content-display">
+                <div class="section-header">
+                    <h3>📐 Shorts: Math</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-math')">← Change Subject</button>
                 </div>
                 <div class="video-grid">
-                    <div class="placeholder-card">Shorts coming soon!</div>
+                    <div class="placeholder-card">Math shorts coming soon!</div>
+                </div>
+            </div>
+
+            <div id="sh-biology" class="nested-content-display">
+                <div class="section-header">
+                    <h3>🧬 Shorts: Biology</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-biology')">← Change Subject</button>
+                </div>
+                <div class="video-grid">
+                    <div class="placeholder-card">Biology shorts coming soon!</div>
                 </div>
             </div>
 
@@ -281,11 +335,9 @@
     <script>
         function showSection(sectionId) {
             document.getElementById('homepage').style.display = 'none';
-            
             document.getElementById('long-form').style.display = 'none';
             document.getElementById('shorts').style.display = 'none';
             resetCategoryMenu(sectionId);
-            
             document.getElementById(sectionId).style.display = 'block';
         }
 
@@ -298,15 +350,26 @@
         function showSubContent(parentSectionId, targetSubId) {
             document.getElementById(parentSectionId + '-menu').style.display = 'none';
             
-            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display');
+            // Clear all standard sub displays and nested panels inside the section
+            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display, #' + parentSectionId + ' .nested-content-display');
             displays.forEach(div => div.style.display = 'none');
             
             document.getElementById(targetSubId).style.display = 'block';
         }
 
+        function showNestedContent(parentSectionId, currentMenuId, targetFinalId) {
+            document.getElementById(currentMenuId).style.display = 'none';
+            document.getElementById(targetFinalId).style.display = 'block';
+        }
+
+        function backToNestedMenu(menuMenuId, currentContentId) {
+            document.getElementById(currentContentId).style.display = 'none';
+            document.getElementById(menuMenuId).style.display = 'block';
+        }
+
         function resetCategoryMenu(parentSectionId) {
             document.getElementById(parentSectionId + '-menu').style.display = 'grid';
-            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display');
+            const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display, #' + parentSectionId + ' .nested-content-display');
             displays.forEach(div => div.style.display = 'none');
         }
     </script>
