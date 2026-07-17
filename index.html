@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch and Learn</title>
     <style>
-        /* Modern Dark Mode Styling */
+        /* --- Premium Cinematic Theme Configuration --- */
+        :root {
+            --bg-main: #0a0a0c;
+            --bg-card: #121216;
+            --bg-card-hover: #1c1c24;
+            --accent-color: #ff2a2a;
+            --accent-glow: rgba(255, 42, 42, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-glow: rgba(255, 255, 255, 0.05);
+            --radius-main: 16px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,173 +26,270 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f0f0f;
-            color: #f1f1f1;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             line-height: 1.6;
-            padding-bottom: 60px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 42, 0.02) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
+        /* --- Elegant Master Header --- */
         header {
-            background-color: #161616;
+            position: relative;
+            background: linear-gradient(180deg, #121216 0%, transparent 100%);
             text-align: center;
-            padding: 50px 20px;
-            border-bottom: 1px solid #282828;
+            padding: 70px 20px 40px;
+            border-bottom: 1px solid var(--border-glow);
         }
 
         header h1 {
-            font-size: 2.8rem;
-            color: #ff0000;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #ffffff 40%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
         }
 
         header p {
-            color: #aaa;
-            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* Navigation Cards Grid */
+        /* --- Dynamic Interactive Grids --- */
         .homepage-nav, .subcategory-nav, .nested-category-nav {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
+        /* --- The 100x Card Core Styling --- */
         .nav-card {
-            background-color: #161616;
-            border: 2px solid #282828;
-            border-radius: 16px;
-            padding: 40px 20px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-main);
+            padding: 45px 30px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 42, 42, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .nav-card:hover::before {
+            opacity: 1;
         }
 
         .nav-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff0000;
-            background-color: #1c1c1c;
+            transform: translateY(-8px) scale(1.02);
+            background-color: var(--bg-card-hover);
+            border-color: rgba(255, 42, 42, 0.4);
+            box-shadow: 0 12px 40px rgba(255, 42, 42, 0.15);
         }
 
-        .nav-card h2, .nav-card h3, .nav-card h4 {
-            color: #fff;
+        .nav-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-card h3, .nav-card h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 10px;
         }
 
         .nav-card p {
-            color: #888;
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
         }
 
-        /* Main Category Content Sections */
+        /* --- Unified Content Sections --- */
         .main-section {
             display: none;
-            background-color: #161616;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 20px;
-            border: 1px solid #282828;
+            background: rgba(18, 18, 22, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 15px;
+            margin-bottom: 35px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 20px;
         }
 
         .section-header h2 {
-            font-size: 2rem;
-            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        /* Control Buttons */
+        /* --- Sleek Control Mechanism --- */
         .back-btn {
-            background-color: #282828;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 10px 20px;
-            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
-            transition: background-color 0.2s, border-color 0.2s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
         }
 
         .back-btn:hover {
-            background-color: #333;
-            border-color: #ff0000;
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateX(-4px);
         }
 
-        /* Sub-content display sheets */
+        /* --- Ultimate Presentation Windows --- */
         .sub-content-display, .nested-content-display {
             display: none;
-            background-color: #1f1f1f;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 25px;
-            border: 1px solid #383838;
+            background: rgba(10, 10, 12, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.04);
+            animation: fadeIn 0.3s ease forwards;
         }
 
         .sub-content-display h3, .nested-content-display h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #e1e1e1;
-            border-bottom: 1px solid #444;
-            padding-bottom: 8px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            border: none;
+            padding: 0;
         }
 
-        /* Large Video Layout */
+        /* --- Large Video Component Layout --- */
         .video-container {
-            margin-top: 15px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            width: 100%;
         }
 
-        .video-container iframe {
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            max-width: 100%;
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 42, 42, 0.05);
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
-        /* Grid for standard layouts and shorts layout */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
-        /* Dedicated Side-by-Side Horizontal Shorts Grid Centered */
+        /* --- Advanced Side-by-Side Shorts Integration --- */
         .shorts-flex-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 10px;
+            width: 100%;
         }
 
-        .shorts-flex-container iframe {
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        .short-card-wrapper {
+            width: 340px;
+            aspect-ratio: 9 / 16;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .short-card-wrapper:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 45px rgba(2ff, 42, 42, 0.15);
+        }
+
+        .short-card-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Empty Workspace Framework Design --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .placeholder-card {
-            background-color: #282828;
-            border-radius: 6px;
-            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
+            border-radius: 14px;
+            padding: 60px 30px;
             text-align: center;
-            color: #888;
-            border: 1px dashed #444;
+            color: var(--text-secondary);
+            border: 2px dashed rgba(255,255,255,0.06);
             width: 100%;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -187,7 +297,7 @@
 
     <header>
         <h1>Watch and Learn</h1>
-        <p>Explore educational content and fascinating facts</p>
+        <p>Explore high-quality production breakdowns, technical lectures, and deep dives</p>
     </header>
 
     <div class="container">
@@ -196,12 +306,12 @@
         <div id="homepage" class="homepage-nav">
             <div class="nav-card" onclick="showSection('long-form')">
                 <h2>🎬 Long Form</h2>
-                <p>Deep dives, tutorials, and extended breakdowns</p>
+                <p>Deep dives, tutorials, and extended conceptual breakdowns</p>
             </div>
             
             <div class="nav-card" onclick="showSection('shorts')">
                 <h2>⚡ Shorts</h2>
-                <p>Quick facts and fast paced knowledge snippets</p>
+                <p>Fast-paced knowledge snippets and quick updates</p>
             </div>
         </div>
 
@@ -209,36 +319,36 @@
         <!-- ================= LONG FORM SECTION ================= -->
         <section id="long-form" class="main-section">
             <div class="section-header">
-                <h2>Long Form Content</h2>
-                <button class="back-btn" onclick="showHomepage()">← Back to Home</button>
+                <h2>Long Form Production</h2>
+                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
             </div>
 
             <!-- Inside Category Choice Menu -->
             <div id="long-form-menu" class="subcategory-nav">
                 <div class="nav-card" onclick="showSubContent('long-form', 'lf-educational-menu')">
                     <h3>📚 Educational</h3>
-                    <p>View lessons in Math and Biology</p>
+                    <p>Structured courses and analytical lectures</p>
                 </div>
                 <div class="nav-card" onclick="showSubContent('long-form', 'lf-facts')">
                     <h3>💡 Facts</h3>
-                    <p>Browse long form general knowledge compilations</p>
+                    <p>Comprehensive long-form data compilations</p>
                 </div>
             </div>
 
             <!-- Nested Educational Choice Menu -->
             <div id="lf-educational-menu" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📚 Long Form: Select Subject</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Back to Options</button>
+                    <h3>📚 Long Form: Select Arena</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">↩ Back to Options</button>
                 </div>
                 <div class="nested-category-nav">
                     <div class="nav-card" onclick="showNestedContent('long-form', 'lf-educational-menu', 'lf-math')">
-                        <h4>📐 Math</h4>
-                        <p>Long form equations and problems</p>
+                        <h4>📐 Mathematics</h4>
+                        <p>Advanced algorithmic equations and problems</p>
                     </div>
                     <div class="nav-card" onclick="showNestedContent('long-form', 'lf-educational-menu', 'lf-biology')">
                         <h4>🧬 Biology</h4>
-                        <p>Deep dives into living organisms</p>
+                        <p>Complex visual deep-dives into organic systems</p>
                     </div>
                 </div>
             </div>
@@ -246,31 +356,33 @@
             <!-- Final Content Display Panes -->
             <div id="lf-math" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📐 Long Form: Math</h3>
-                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-math')">← Change Subject</button>
+                    <h3>📐 Long Form: Mathematics</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-math')">↩ Change Subject</button>
                 </div>
                 <div class="video-grid">
-                    <div class="placeholder-card">Math videos coming soon!</div>
+                    <div class="placeholder-card">Math library currently updating. Content dropping soon.</div>
                 </div>
             </div>
 
             <div id="lf-biology" class="nested-content-display">
                 <div class="section-header">
                     <h3>🧬 Long Form: Biology</h3>
-                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-biology')">← Change Subject</button>
+                    <button class="back-btn" onclick="backToNestedMenu('lf-educational-menu', 'lf-biology')">↩ Change Subject</button>
                 </div>
                 <div class="video-container">
-                    <iframe width="800" height="450" src="https://www.youtube.com/embed/egVstzQQF0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/egVstzQQF0c" title="Let's learn about the Human Body" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
 
             <div id="lf-facts" class="sub-content-display">
                 <div class="section-header">
                     <h3>💡 Long Form: Facts</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">← Change Subcategory</button>
+                    <button class="back-btn" onclick="resetCategoryMenu('long-form')">↩ Change Subcategory</button>
                 </div>
                 <div class="video-grid">
-                    <div class="placeholder-card">Videos coming soon!</div>
+                    <div class="placeholder-card">Fact archives opening soon. Stay tuned.</div>
                 </div>
             </div>
         </section>
@@ -279,36 +391,36 @@
         <!-- ================= SHORTS SECTION ================= -->
         <section id="shorts" class="main-section">
             <div class="section-header">
-                <h2>Shorts</h2>
-                <button class="back-btn" onclick="showHomepage()">← Back to Home</button>
+                <h2>Shorts Dynamic Feed</h2>
+                <button class="back-btn" onclick="showHomepage()">📑 Back to Home</button>
             </div>
 
             <!-- Inside Category Choice Menu -->
             <div id="shorts-menu" class="subcategory-nav">
                 <div class="nav-card" onclick="showSubContent('shorts', 'sh-educational-menu')">
-                    <h3>📚 Educational Shorts</h3>
-                    <p>Quick dynamic lessons in Math and Biology</p>
+                    <h3>📚 Educational Feed</h3>
+                    <p>Bite-sized breakdown tracks</p>
                 </div>
                 <div class="nav-card" onclick="showSubContent('shorts', 'sh-facts')">
-                    <h3>💡 Fact Shorts</h3>
-                    <p>Quick dynamic updates and interesting facts</p>
+                    <h3>💡 Fact Feed</h3>
+                    <p>Fast paced breakdowns and cultural matrix updates</p>
                 </div>
             </div>
 
             <!-- Nested Educational Choice Menu -->
             <div id="sh-educational-menu" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📚 Shorts: Select Subject</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Back to Options</button>
+                    <h3>📚 Shorts: Select Area</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">↩ Back to Options</button>
                 </div>
                 <div class="nested-category-nav">
                     <div class="nav-card" onclick="showNestedContent('shorts', 'sh-educational-menu', 'sh-math')">
-                        <h4>📐 Math Shorts</h4>
-                        <p>Quick math tips and tricks</p>
+                        <h4>📐 Math Blocks</h4>
+                        <p>Speed tactics and geometric hacks</p>
                     </div>
                     <div class="nav-card" onclick="showNestedContent('shorts', 'sh-educational-menu', 'sh-biology')">
-                        <h4>🧬 Biology Shorts</h4>
-                        <p>Bite-sized biology facts</p>
+                        <h4>🧬 Bio Blocks</h4>
+                        <p>Micro-facts on organisms</p>
                     </div>
                 </div>
             </div>
@@ -316,40 +428,44 @@
             <!-- Final Content Display Panes -->
             <div id="sh-math" class="nested-content-display">
                 <div class="section-header">
-                    <h3>📐 Shorts: Math</h3>
-                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-math')">← Change Subject</button>
+                    <h3>📐 Shorts: Mathematics</h3>
+                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-math')">↩ Change Subject</button>
                 </div>
                 <div class="video-grid">
-                    <div class="placeholder-card">Math shorts coming soon!</div>
+                    <div class="placeholder-card">Math loops generation in progress.</div>
                 </div>
             </div>
 
             <div id="sh-biology" class="nested-content-display">
                 <div class="section-header">
                     <h3>🧬 Shorts: Biology</h3>
-                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-biology')">← Change Subject</button>
+                    <button class="back-btn" onclick="backToNestedMenu('sh-educational-menu', 'sh-biology')">↩ Change Subject</button>
                 </div>
                 <div class="video-grid">
-                    <div class="placeholder-card">Biology shorts coming soon!</div>
+                    <div class="placeholder-card">Micro-cellular loops preparing.</div>
                 </div>
             </div>
 
             <div id="sh-facts" class="sub-content-display">
                 <div class="section-header">
-                    <h3>💡 Shorts: Facts</h3>
-                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">← Change Subcategory</button>
+                    <h3>💡 Shorts: Fact Archives</h3>
+                    <button class="back-btn" onclick="resetCategoryMenu('shorts')">↩ Change Subcategory</button>
                 </div>
-                <!-- Side-by-Side Shorts Layout Container -->
+                <!-- Dynamic Matrix 4k Grid Shorts Flex Integration Container -->
                 <div class="shorts-flex-container">
-                    <iframe width="315" height="560" src="https://www.youtube.com/embed/FhVCr64NHcw" title="Did you know this Minecraft Fact?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <iframe width="315" height="560" src="https://www.youtube.com/embed/Y226CScr4tc" title="Did you know this Roblox Fact?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="short-card-wrapper">
+                        <iframe src="https://www.youtube.com/embed/FhVCr64NHcw" title="Did you know this Minecraft Fact?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Y226CScr4tc" title="Did you know this Roblox Fact?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Interface Navigation Logic -->
+    <!-- Interface Controller Engine Script -->
     <script>
         function showSection(sectionId) {
             document.getElementById('homepage').style.display = 'none';
@@ -367,11 +483,8 @@
 
         function showSubContent(parentSectionId, targetSubId) {
             document.getElementById(parentSectionId + '-menu').style.display = 'none';
-            
-            // Clear all standard sub displays and nested panels inside the section
             const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display, #' + parentSectionId + ' .nested-content-display');
             displays.forEach(div => div.style.display = 'none');
-            
             document.getElementById(targetSubId).style.display = 'block';
         }
 
@@ -390,7 +503,17 @@
             const displays = document.querySelectorAll('#' + parentSectionId + ' .sub-content-display, #' + parentSectionId + ' .nested-content-display');
             displays.forEach(div => div.style.display = 'none');
         }
-    </script>
 
+        // Card Interactive 3D Lighting Cursor Tracking Effect
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
